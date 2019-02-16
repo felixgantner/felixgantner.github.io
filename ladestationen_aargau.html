@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Show and hide layers</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+<style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+ 
+<style>
+#menu {
+background: #fff;
+position: absolute;
+z-index: 1;
+top: 10px;
+right: 10px;
+border-radius: 3px;
+width: 120px;
+border: 1px solid rgba(0,0,0,0.4);
+font-family: 'Open Sans', sans-serif;
+}
+ 
+#menu a {
+font-size: 13px;
+color: #404040;
+display: block;
+margin: 0;
+padding: 0;
+padding: 10px;
+text-decoration: none;
+border-bottom: 1px solid rgba(0,0,0,0.25);
+text-align: center;
+}
+ 
+#menu a:last-child {
+border: none;
+}
+ 
+#menu a:hover {
+background-color: #f8f8f8;
+color: #404040;
+}
+ 
+#menu a.active {
+background-color: #3887be;
+color: #ffffff;
+}
+ 
+#menu a.active:hover {
+background: #3074a4;
+}
+</style>
+ 
+<nav id="menu"></nav>
+<div id="map"></div>
+ 
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoibWV2aW5hZmV1ZXJzdGVpbiIsImEiOiJjanM3N2pydXcwMDJlNDNxeHU0cnk0eTBwIn0.kqZCQvLpVkBveWusmM51dw';
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mevinafeuerstein/cjs78ykj737jx1ftd6b2fyqir',
+  center: [7.947220, 47.260830],
+  zoom: 9.0
+});
+
+/*mapboxgl.accessToken = 'pk.eyJ1IjoiZmVsaXhoYWNrZGF5cyIsImEiOiJjanM3N2l0czMwdjdtNDNvNWppemw0czZpIn0.6aJNl8YnMQpEQ0L7SV526w';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v9',
+zoom: 15,
+center: [-71.97722138410576, -13.517379300798098]
+});
+*/
+map.on('load', function () {
+
+    map.addSource('Ladestationen', {
+        type: 'vector',
+        url: 'mapbox://mapbox.2opop9hr'
+    });
+	    map.addLayer({
+        'id': 'Ladestationen',
+        'type': 'circle',
+        'source': 'Ladestationen',
+		'source-layer': 'Ladestationen',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'circle-radius': 8,
+            'circle-color': 'rgba(55,148,179,1)'
+        }
+        
+    });
+
+map.addSource('Park and Ride AG', {
+type: 'vector',
+url: 'mevinafeuerstein.3yk8cmqi'
+});
+map.addLayer({
+'id': 'Park and Ride AG',
+'type': 'circle',
+'source': 'Park and Ride AG',
+'layout': {
+'visibility': 'visible'
+},
+'paint': {
+'circle-radius': 8,
+'circle-color': 'rgba(55,148,179,1)'
+},
+'source-layer': 'Park and Ride AG'
+});
+
+
+	
+	map.addSource('Park and Pool AG', {
+        type: 'vector',
+        url: 'mapbox://mapbox.2opop9hr'
+    });
+	    map.addLayer({
+        'id': 'Park and Pool AG',
+        'type': 'circle',
+        'source': 'Park and Pool AG',
+		'source-layer': 'Park and Pool AG',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'circle-radius': 8,
+            'circle-color': 'rgba(55,148,179,1)'
+        }
+        
+    });
+	
+	
+	map.addSource('Parkplatz Kanton AG', {
+        type: 'vector',
+        url: 'mapbox://mapbox.2opop9hr'
+    });
+	    map.addLayer({
+        'id': 'Parkplatz Kanton AG',
+        'type': 'circle',
+        'source': 'Parkplatz Kanton AG',
+		'source-layer': 'Parkplatz Kanton AG',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'circle-radius': 8,
+            'circle-color': 'rgba(55,148,179,1)'
+        }
+        
+    });
+	
+	
+	map.addSource('Netzbetreiber Aargau', {
+        type: 'vector',
+        url: 'mapbox://mapbox.2opop9hr'
+    });
+	    map.addLayer({
+        'id': 'Netzbetreiber Aargau',
+        'type': 'circle',
+        'source': 'Netzbetreiber Aargau',
+		'source-layer': 'Netzbetreiber Aargau',
+        'layout': {
+            'visibility': 'visible'
+        },
+        'paint': {
+            'circle-radius': 8,
+            'circle-color': 'rgba(55,148,179,1)'
+        }
+        
+    });
+	
+	map.addSource('Gemeindegrenzen AG', {
+        type: 'vector',
+        url: 'mapbox://mapbox.2opop9hr'
+    });
+	    map.addLayer({
+        'id': 'Gemeindegrenzen AG',
+        'type': 'circle',
+        'source': 'Gemeindegrenzen AG',
+		'source-layer': 'Gemeindegrenzen AG',
+        'layout': {
+        'visibility': 'none'
+        },
+        'paint': {
+            'circle-radius': 8,
+            'circle-color': 'rgba(55,148,179,1)'
+        }
+        
+    });
+ 
+});
+ 
+var toggleableLayerIds = ['Ladestationen','Park and Ride AG','Park and Pool AG','Parkplatz Kanton AG','Netzbetreiber Aargau','Gemeindegrenzen AG'];
+ 
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+var id = toggleableLayerIds[i];
+ 
+var link = document.createElement('a');
+link.href = '#';
+link.className = 'active';
+link.textContent = id;
+ 
+link.onclick = function (e) {
+var clickedLayer = this.textContent;
+e.preventDefault();
+e.stopPropagation();
+ 
+var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+ 
+if (visibility === 'visible') {
+map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+this.className = '';
+} else {
+this.className = 'active';
+map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+}
+};
+ 
+var layers = document.getElementById('menu');
+layers.appendChild(link);
+}
+ 
+</script>
+ 
+</body>
+</html>
